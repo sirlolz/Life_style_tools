@@ -24,10 +24,12 @@ export default class LoginCreate extends React.Component {
         }else{
             this.setState({display: false})
         }
-        console.log(event.target.innerText)
+    }
+
+    setDisplay = () => {
+        this.setState({display: false})
     }
     render() {
-        console.log(this.props)
         return (
         <div>
             <div className="nav"><h1 onClick={this.handleClick}>Login</h1><h1 onClick={this.handleClick}>createUser</h1></div>
@@ -35,6 +37,7 @@ export default class LoginCreate extends React.Component {
                 <CreateUser 
                     username={this.state.username} password={this.state.password} 
                     HandleChangePassword={this.HandleChangePassword} HandleChangeUserName={this.HandleChangeUserName}
+                    onCreateUser={this.props.onCreateUser} setDisplay={this.setDisplay}
                 /> 
                 ) 
             : (

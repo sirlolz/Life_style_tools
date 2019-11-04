@@ -2,9 +2,6 @@ class AuthController < ApplicationController
     skip_before_action :authorized
 
     def create
-        puts "####################################################################################################"
-        puts params
-        puts "####################################################################################################"
         @user = User.find_by(username: user_login_params[:username])
         if @user && @user.authenticate(user_login_params[:password])
             token = encode_token({ user_id: @user.id })

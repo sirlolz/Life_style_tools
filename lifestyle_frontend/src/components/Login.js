@@ -4,14 +4,13 @@ export default class Login extends React.Component {
 
     HandleSubmit = (e) => {
         e.preventDefault()
-        console.log(this.props.username)
         this.props.onLogin(this.props.username, this.props.password)
     }
     
     render() {
         return (
-            <>
             <form onSubmit={this.HandleSubmit}>
+                <label>login</label><br/>
                 <label>
                     name: 
                     <input type="text" value={this.props.username} onChange={this.props.HandleChangeUserName}/>
@@ -22,7 +21,6 @@ export default class Login extends React.Component {
                 </label>
                 <input type="submit" value="Login" />
             </form>
-            </>
         )
     }
 }
