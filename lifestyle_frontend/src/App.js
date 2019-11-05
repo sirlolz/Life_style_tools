@@ -2,8 +2,10 @@ import React from 'react';
 import LoginCreate from "./container/LoginCreate"
 import Nav from "./container/Nav"
 import Budget from "./container/budget"
+import User from "./container/User"
+import Workout from './container/Workout'
 import './App.css';
-import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 
 export default class App extends React.Component {
@@ -12,6 +14,16 @@ export default class App extends React.Component {
     key: "",
     currentUser: {},
     loggedIn: false
+  }
+
+  addBudget = (budget) => {
+    this.setState( 
+      prev => (
+        {...prev, currentUser:{
+          ...prev.currentUser, budgets: [{...budget}]
+        }}
+      )
+    )
   }
 
   onCreateUser = (username, password) => {
@@ -40,20 +52,23 @@ export default class App extends React.Component {
     ).then(r => r.json()).then(d => {
         console.log(d.user)
         localStorage.setItem('token', d.jwt)
-        this.setState({currentUser: {...d.user}})
+        this.setState({loggedIn: true, currentUser: {...d.user}})
+        
     })
   }
 
   render (){
+    console.log(this.state.loggedIn)
     return (
-      <div className="App">
         <Router>
-          {localStorage.token ?<Redirect to='/'/>:<Redirect to="/login"/>}
+          <div >
+            <Nav loggedIn={this.state.loggedIn}/>
+          <Route exact path="/" render={() => < User currentUser={this.state.currentUser} />}/>
           <Route exact path="/login" render={() => <LoginCreate onLogin={this.onLogin} onCreateUser={this.onCreateUser} />}/>
-          <Route exact path="/" render={() => < Nav currentUser={this.state.currentUser} />}/>
-          <Route exact path='/budget' render={() => <Budget budgets={this.state.currentUser.budgets} currentUser={this.state.currentUser}/> }/>
+          <Route exact path='/budget' render={() => <Budget addBudget={this.addBudget} loggedIn={this.state.loggedIn} budgets={this.state.currentUser.budgets} currentUser={this.state.currentUser}/> }/>
+          <Route exact path='/workout' render={() => <Workout />} />
+          </div>
         </Router>
-      </div>
     );
   }
 }

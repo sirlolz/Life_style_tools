@@ -1,13 +1,20 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
+import {Link, Redirect} from 'react-router-dom'
+
 export default class Nav extends React.Component {
 
+
+
     render() {
+        if (this.props.loggedIn === false){
+            return <Redirect to="/login" />
+        }
+
         return (
-            <>
-            <Link to='/budget'>budget</Link>
-            </>
-        )
+            <div>
+        <Link to='/budget'>budget</Link> <Link to='/'>home</Link> <Link to='/workout'>workout</Link>
+        </div>)
+        
     }
 
 }

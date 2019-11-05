@@ -2,13 +2,14 @@ class Budget < ApplicationRecord
     belongs_to :user
 
     def self.makeStuff(args)
-        i = args['income']
-        e = args['expenses']
-        left = i.to_i - e.to_i
-        if i < e
-            Budget.new(income: i, expenses: e, savings: 0, investment: 0, user_id: args['user_id'])
+        income = args['income']
+        expense = args['expenses']
+        left = income.to_i - expense.to_i
+        saving = args['savings'].to_f * left
+        if income.to_i < expense.to_i
+            Budget.new(income: income, expenses: expense, savings: 0, investment: 0, user_id: args['user_id'])
         else
-            Budget.new(income: i, expenses: e, savings: args['savings']*left, investment: args['investment'] * left, user_id: args['user_id'])
+            Budget.new(income: income, expenses: expense, savings: saving, investment: args['investment'].to_f * left, user_id: args['user_id'])
         end
     end
 end

@@ -16,7 +16,6 @@ class BudgetsController < ApplicationController
   # POST /budgets
   def create
     @budget = Budget.makeStuff(budget_params)
-    puts @budget
 
     if @budget.save
       render json: @budget, status: :created, location: @budget

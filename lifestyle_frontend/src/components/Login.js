@@ -1,10 +1,10 @@
 import React from 'react'
-
 export default class Login extends React.Component {
 
     HandleSubmit = (e) => {
         e.preventDefault()
         this.props.onLogin(this.props.username, this.props.password)
+        this.props.onredirect()
     }
     
     render() {
