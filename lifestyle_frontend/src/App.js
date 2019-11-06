@@ -4,6 +4,7 @@ import Nav from "./container/Nav"
 import Budget from "./container/budget"
 import User from "./container/User"
 import Workout from './container/Workout'
+import Recipe from './container/Recipe'
 import './App.css';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
@@ -21,6 +22,16 @@ export default class App extends React.Component {
       prev => (
         {...prev, currentUser:{
           ...prev.currentUser, budgets: [{...budget}]
+        }}
+      )
+    )
+  }
+
+  removeBudget = () => {
+    this.setState( 
+      prev => (
+        {...prev, currentUser:{
+          ...prev.currentUser, budgets: []
         }}
       )
     )
@@ -50,23 +61,26 @@ export default class App extends React.Component {
         body: JSON.stringify({ "user":{"username": username, "password":password} })
       }
     ).then(r => r.json()).then(d => {
-        console.log(d.user)
         localStorage.setItem('token', d.jwt)
         this.setState({loggedIn: true, currentUser: {...d.user}})
         
     })
   }
 
+  logout = () => {
+    this.setState({loggedIn: false})
+  }
+
   render (){
-    console.log(this.state.loggedIn)
     return (
         <Router>
           <div >
-            <Nav loggedIn={this.state.loggedIn}/>
+            <Nav loggedIn={this.state.loggedIn} logout={this.logout}/>
           <Route exact path="/" render={() => < User currentUser={this.state.currentUser} />}/>
           <Route exact path="/login" render={() => <LoginCreate onLogin={this.onLogin} onCreateUser={this.onCreateUser} />}/>
-          <Route exact path='/budget' render={() => <Budget addBudget={this.addBudget} loggedIn={this.state.loggedIn} budgets={this.state.currentUser.budgets} currentUser={this.state.currentUser}/> }/>
+          <Route exact path='/budget' render={() => <Budget removeBudget={this.removeBudget} addBudget={this.addBudget} loggedIn={this.state.loggedIn} budgets={this.state.currentUser.budgets} currentUser={this.state.currentUser}/> }/>
           <Route exact path='/workout' render={() => <Workout />} />
+          <Route exact path='/foodplease' render={() => <Recipe />} />
           </div>
         </Router>
     );

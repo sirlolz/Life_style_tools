@@ -7,6 +7,7 @@ export default class BudgetCard extends React.Component {
             expense: {this.props.budget.expenses} <br/>
             savings: {this.props.budget.savings} <br/>
             investments: {this.props.budget.investment} <br/>
+            <button onClick={this.props.delete}>delete budget</button>
         </div>
     }
 }
