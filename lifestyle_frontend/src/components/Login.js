@@ -1,4 +1,6 @@
 import React from 'react'
+import '../css/login.css'
+
 export default class Login extends React.Component {
 
     HandleSubmit = (e) => {
@@ -10,16 +12,16 @@ export default class Login extends React.Component {
     render() {
         return (
             <form onSubmit={this.HandleSubmit}>
-                <label>login</label><br/>
-                <label>
+                <h1 className="loginHeader">login</h1><br/>
+                <label className="name">
                     name: 
-                    <input type="text" value={this.props.username} onChange={this.props.HandleChangeUserName}/>
-                </label><br/>
-                <label>
-                    password: 
-                    <input type="password" value={this.props.password} onChange={this.props.HandleChangePassword}/>
                 </label>
-                <input type="submit" value="Login" />
+                <input className="nameInput" type="text" value={this.props.username} onChange={this.props.HandleChangeUserName}/>
+                <label className="password">
+                    password: 
+                </label>
+                <input className="passwordInput" type="password" value={this.props.password} onChange={this.props.HandleChangePassword}/>
+                <button className="subby" type="submit">Submit</button>
             </form>
         )
     }

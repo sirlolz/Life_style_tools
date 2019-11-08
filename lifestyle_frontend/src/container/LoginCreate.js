@@ -1,6 +1,7 @@
 import React from 'react'
 import Login from "../components/Login"
 import CreateUser from "../components/createUser"
+import '../css/loginCreate.css'
 import {Redirect} from 'react-router-dom'
 
 export default class LoginCreate extends React.Component {
@@ -41,8 +42,9 @@ export default class LoginCreate extends React.Component {
             return <Redirect to="/" />
         }
         return (
-        <div>
-            <div className="nav"><h1 onClick={this.handleClick}>Login</h1><h1 onClick={this.handleClick}>createUser</h1></div>
+        <div className='login'>
+            <div className="bar"><h1 onClick={this.handleClick}>Login</h1><h1 className="blinking" onClick={this.handleClick}>createUser</h1></div>
+            <div className='form'>
             { this.state.display ?  (
                 <CreateUser 
                     username={this.state.username} password={this.state.password} 
@@ -57,6 +59,7 @@ export default class LoginCreate extends React.Component {
                     onLogin={this.props.onLogin} onredirect={this.redirect}
                 />
              ) }
+             </div>
         </div>
         )
     }

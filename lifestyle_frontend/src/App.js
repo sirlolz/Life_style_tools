@@ -5,7 +5,7 @@ import Budget from "./container/budget"
 import User from "./container/User"
 import Workout from './container/Workout'
 import Recipe from './container/Recipe'
-import './App.css';
+import './css/App.css';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 
@@ -69,18 +69,19 @@ export default class App extends React.Component {
 
   logout = () => {
     this.setState({loggedIn: false})
+    localStorage.token = ''
   }
 
   render (){
     return (
         <Router>
-          <div >
+          <div style={this.state.style}>
             <Nav loggedIn={this.state.loggedIn} logout={this.logout}/>
           <Route exact path="/" render={() => < User currentUser={this.state.currentUser} />}/>
           <Route exact path="/login" render={() => <LoginCreate onLogin={this.onLogin} onCreateUser={this.onCreateUser} />}/>
           <Route exact path='/budget' render={() => <Budget removeBudget={this.removeBudget} addBudget={this.addBudget} loggedIn={this.state.loggedIn} budgets={this.state.currentUser.budgets} currentUser={this.state.currentUser}/> }/>
           <Route exact path='/workout' render={() => <Workout />} />
-          <Route exact path='/foodplease' render={() => <Recipe />} />
+          <Route exact path='/foodplease' render={() => <Recipe background={this.background}/>} />
           </div>
         </Router>
     );

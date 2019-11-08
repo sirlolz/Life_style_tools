@@ -1,0 +1,16 @@
+svg {
+    position: fixed;
+    top:3.8vh;
+    height: 50vh;
+}
+
+.raw-data {
+    position: fixed;
+    top:4vh;
+
+}
+
+form {
+    position: fixed;
+    top: 17vh;
+}

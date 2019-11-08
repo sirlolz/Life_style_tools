@@ -24,8 +24,6 @@ export default class Workout extends React.Component {
     }
 
     render(){
-        const goal = [{ key: '1', value: '1', text: 'Strength' },{ key: '2', value: '2', text: 'Cardio' }]
-        console.log(this.state)
         return (
             <>
             <select onChange={this.handleSubmit} value={this.state.plan}>

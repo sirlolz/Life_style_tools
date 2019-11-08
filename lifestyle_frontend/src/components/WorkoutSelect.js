@@ -10,7 +10,6 @@ export default class WorkoutSelect extends React.Component {
         }
     }
     render () {
-        console.log(this.props)
         return <div>{this.props.plan === 'cardio'? <div>{this.props.cardio[this.datecheck()].name}</div> : <div>{this.props.strength[this.datecheck()].name}</div>}</div>
     }
 }

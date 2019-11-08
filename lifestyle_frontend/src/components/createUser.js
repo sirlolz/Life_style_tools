@@ -9,7 +9,7 @@ export default class CreateUser extends React.Component {
     render() {
         return(
             <form onSubmit={this.HandleSubmit}>
-                <label>create User</label><br/>
+                <h2>create User</h2><br/>
                 <label>
                     name: 
                     <input type="text" value={this.props.username} onChange={this.props.HandleChangeUserName}/>
