@@ -26,7 +26,8 @@ class BudgetsController < ApplicationController
 
   # PATCH/PUT /budgets/1
   def update
-    if @budget.update(budget_params)
+    budget = Budget.edit_stuff(budget_params)
+    if @budget.update(budget)
       render json: @budget
     else
       render json: @budget.errors, status: :unprocessable_entity

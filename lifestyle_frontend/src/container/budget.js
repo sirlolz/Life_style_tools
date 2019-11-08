@@ -8,7 +8,7 @@ export default class Budget extends React.Component {
         edit: false
     }
 
-    CreateBudget = (income, expenses, savings, investment) => {
+    createBudget = (income, expenses, savings, investment) => {
         fetch("http://localhost:3000/budgets",
         {
           method: "POST",
@@ -37,9 +37,18 @@ export default class Budget extends React.Component {
         })
     }
 
-    // handleEdit = () => {
-    //     this.setState(prev => ({})
-    // }
+    editbudget = (income, expenses, savings, investment) => {
+        let id = this.props.currentUser.budgets[0].id
+        fetch(`http://localhost:3000/budgets/${id}`, {
+            method: 'PUT',
+            headers: {
+                'content-Type':'application/json',
+                'Accept': 'application/json',
+                'Authorization': `Bearer ${localStorage.token}`
+            },
+            body: JSON.stringify({"budget":{"income": income, "expenses":expenses, 'savings': savings, 'investment':investment, 'user_id':this.props.currentUser.id}})
+        }).then(resp => resp.json()).then(budget => this.props.addBudget(budget))
+    }
 
     render() {
         if (this.props.loggedIn === false){
@@ -47,8 +56,7 @@ export default class Budget extends React.Component {
         }
             return (
             <div>
-                {this.props.currentUser.budgets.length > 0 ? <BudgetCard budget={this.props.budgets[0]} delete={this.deleteBudget}/>:<CreateBudget handleCreate={this.CreateBudget} />}
-                {/* {this.state.edit ? <EditBudget />:null} */}
+                {this.props.currentUser.budgets.length > 0 ? <BudgetCard budget={this.props.budgets[0]} delete={this.deleteBudget} handleCreate={this.editbudget}/>:<CreateBudget handleCreate={this.createBudget} />}
             </div>
             )
     }
