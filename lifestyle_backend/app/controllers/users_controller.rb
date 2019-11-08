@@ -4,7 +4,7 @@ class UsersController < ApplicationController
     def profile
         render json: { user: UserSerializer.new(current_user) }, status: :accepted
     end
-    
+
     def create
       @user = User.create(user_params)
       if @user.valid?
@@ -16,6 +16,7 @@ class UsersController < ApplicationController
    
     private
     def user_params
-      params.require(:user).permit(:username, :password, :bio, :avatar)
+      puts params
+      params.require(:user).permit(:username, :password)
     end
 end

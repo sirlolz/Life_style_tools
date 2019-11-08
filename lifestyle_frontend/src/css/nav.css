@@ -1,0 +1,18 @@
+.nav {
+    /* background-color: steelblue; */
+    /* height: 3.3vh; */
+}
+
+.nav a {
+    font-size: 200%;
+    text-decoration: none;
+    border-style: solid;
+    border-color: navy;
+    border-bottom-left-radius: 10%;
+    border-bottom-right-radius: 10%;
+}
+
+.nav a:hover {
+    background: navy;
+    color: mediumslateblue;
+}

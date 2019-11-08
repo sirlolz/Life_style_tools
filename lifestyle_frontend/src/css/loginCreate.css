@@ -1,0 +1,98 @@
+.bar, .nav {
+    background-color: rgb(255, 255, 255);
+    text-align: center;
+}
+
+.bar h1 {
+    display: inline;
+    border-style: solid;
+    border-color: navy;
+    border-bottom-left-radius: 10%;
+    border-bottom-right-radius: 10%;
+}
+
+.bar h1:hover{
+    background: navy;
+    color: mediumslateblue;
+}
+
+.form {
+    margin: 1%;
+    padding:0;
+    text-align: center;
+
+}
+
+.loginHeader {
+    margin-top: 3vh !important;
+    grid-area: a;
+    background: rgba(255, 255, 255, 0.233);
+}
+
+.name {
+    grid-area: b;
+    font-size: 28px;
+    text-align: left;
+    margin-left: 3vw;
+    margin-top:auto;
+    margin-bottom: auto;
+    top:auto;
+    bottom: 0;
+}
+
+.nameInput {
+    grid-area: c;
+    width: 30vw;
+}
+
+.password {
+    font-size: 28px;
+    grid-area: d;
+    text-align: left;
+    margin-left: 3vw;
+    margin-bottom: auto;
+    margin-top:auto;
+    top:auto;
+    bottom: 0;
+}
+
+.passwordInput {
+    width: 30vw;
+    grid-area: e;
+}
+
+.subby {
+    margin-top: 3vh;
+    grid-area: f;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 20px;
+    width: 100px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.subby:hover {
+    color: rgb(75, 183, 255);
+}
+
+.form input {
+    background: rgba(14, 14, 14, 0.452);
+    border: none;
+}
+
+.login form {
+    display: grid;
+    background: rgba(0, 0, 0, 0.384);
+    width: 50vw;
+    margin-top: 50vh;
+    margin-left: auto;
+    margin-right: auto;
+    grid-template-areas: 
+    "a a"
+    "b c"
+    "d e"
+    "f f";
+    border-radius: 1%;
+    gap: 10px;
+}
