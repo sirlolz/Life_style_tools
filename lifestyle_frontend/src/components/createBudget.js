@@ -30,7 +30,7 @@ export default class CreateBudget extends React.Component {
     }
 
     render () {
-       return <form onSubmit={this.handleSubmit}>
+       return <form className='budgetForm' onSubmit={this.handleSubmit}>
             <label>
                 income:
                 <input type="integer" value={this.state.income} onChange={this.handleIncome}/>

@@ -1,9 +1,11 @@
 .nav {
-    /* background-color: steelblue; */
-    /* height: 3.3vh; */
+    background-color: steelblue;
+    height: 3.3vh;
 }
 
 .nav a {
+    margin: 1px;
+    color: indigo;
     font-size: 200%;
     text-decoration: none;
     border-style: solid;
