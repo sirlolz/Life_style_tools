@@ -8,6 +8,12 @@ export default class Budget extends React.Component {
         edit: false
     }
 
+    toggleEdit = () => {
+        this.setState({
+            edit : !this.state.edit
+        })
+    }
+
     createBudget = (income, expenses, savings, investment) => {
         fetch("http://localhost:3000/budgets",
         {
@@ -39,6 +45,7 @@ export default class Budget extends React.Component {
 
     editbudget = (income, expenses, savings, investment) => {
         let id = this.props.currentUser.budgets[0].id
+
         fetch(`http://localhost:3000/budgets/${id}`, {
             method: 'PUT',
             headers: {
@@ -47,7 +54,11 @@ export default class Budget extends React.Component {
                 'Authorization': `Bearer ${localStorage.token}`
             },
             body: JSON.stringify({"budget":{"income": income, "expenses":expenses, 'savings': savings, 'investment':investment, 'user_id':this.props.currentUser.id}})
-        }).then(resp => resp.json()).then(budget => this.props.addBudget(budget))
+        })
+        .then(resp => resp.json())
+        .then(budget=>{
+            this.props.addBudget(budget);
+        }) 
     }
 
     render() {
@@ -56,7 +67,7 @@ export default class Budget extends React.Component {
         }
             return (
             <div>
-                {this.props.currentUser.budgets.length > 0 ? <BudgetCard budget={this.props.budgets[0]} delete={this.deleteBudget} handleCreate={this.editbudget}/>:<CreateBudget handleCreate={this.createBudget} />}
+                {this.props.currentUser.budgets.length > 0 ? <BudgetCard edit={this.state.edit} toggle={this.toggleEdit} budget={this.props.budgets[0]} delete={this.deleteBudget} handleCreate={this.editbudget}/>:<CreateBudget handleCreate={this.createBudget} />}
             </div>
             )
     }

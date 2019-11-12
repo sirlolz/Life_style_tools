@@ -15,7 +15,7 @@ export default class Nav extends React.Component {
             <Link to='/budget'>budget</Link>
             <Link to='/workout'>workout</Link>
             <Link to='/foodplease'>Recipe look-up</Link>
-            <a onClick={()=>this.props.logout()}>logout</a>
+            <button onClick={()=>this.props.logout()}>logout</button>
         </div>)   
     }
 }

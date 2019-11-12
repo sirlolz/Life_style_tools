@@ -25,9 +25,9 @@ export default class BudgetCard extends React.Component {
                 savings: {this.props.budget.savings.toFixed(2)} <br/>
                 investments: {this.props.budget.investment.toFixed(2)} <br/>
                 <button onClick={this.props.delete}>delete budget</button>
-                <button onClick={() => this.setState(prev => ({render:!prev.render}))}>open edit budget</button>
+                <button onClick={() => this.props.toggle()}>open edit budget</button>
             </div>
-            {this.state.render ? (<CreateBudget handleCreate={this.props.handleCreate}/>):(null)}
+            {this.props.edit ? (<CreateBudget toggle={this.props.toggle} handleCreate={this.props.handleCreate}/>):(null)}
         </div>)
     }
 }

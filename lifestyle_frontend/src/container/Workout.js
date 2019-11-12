@@ -6,7 +6,7 @@ export default class Workout extends React.Component {
         plan: "strength"
     }
     componentDidMount = () => {
-        fetch("http://localhost:3000/workouts",{
+        fetch("http://localhost:3000/exercises",{
             method: 'GET',
             headers: {
                 'content-type': 'application/json',
@@ -14,7 +14,8 @@ export default class Workout extends React.Component {
                 'Authorization': `Bearer ${localStorage.token}`
             },
         }).then(r => r.json()).then(d => {
-            this.setState({strength: d[0]['exercises'], cardio: d[1]['exercises']})
+            console.log(d)
+            this.setState({strength: [d[0], d[1]], cardio: [d[2] , d[3]]})
         })
     }
 
