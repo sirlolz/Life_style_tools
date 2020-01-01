@@ -1,9 +1,11 @@
-.bar, .nav {
-    background-color: rgb(255, 255, 255);
+.bar, .nav{
+    background-color: steelblue;
+    /* height: 3.3vh; */
     text-align: center;
 }
 
 .bar h1 {
+    color: black;
     display: inline;
     border-style: solid;
     border-color: navy;
@@ -77,6 +79,7 @@
 }
 
 .form input {
+    color: orangered;
     background: rgba(14, 14, 14, 0.452);
     border: none;
 }

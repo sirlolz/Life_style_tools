@@ -10,7 +10,7 @@ svg {
 
 }
 
-form {
+.budgetForm {
     position: fixed;
-    top: 17vh;
+    top: 23vh;
 }

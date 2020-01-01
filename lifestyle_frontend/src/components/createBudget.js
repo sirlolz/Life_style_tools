@@ -4,8 +4,8 @@ export default class CreateBudget extends React.Component {
     state={
         income: 0,
         expense: 0,
-        saving: 0,
-        invest: 0
+        saving: 0.5,
+        invest: 0.5
     }
 
     handleIncome = (e) => {
@@ -26,11 +26,14 @@ export default class CreateBudget extends React.Component {
 
     handleSubmit = (e) => {
         e.preventDefault()
+        if (this.props.firstTime){
+            this.props.toggle(false);
+        }else{this.props.toggle()}
         this.props.handleCreate(this.state.income, this.state.expense, this.state.saving, this.state.invest)
     }
 
     render () {
-       return <form onSubmit={this.handleSubmit}>
+       return <form className='budgetForm' onSubmit={this.handleSubmit}>
             <label>
                 income:
                 <input type="integer" value={this.state.income} onChange={this.handleIncome}/>
@@ -43,12 +46,20 @@ export default class CreateBudget extends React.Component {
             <br/>
             <label>
                 save:
-                <input type="float" value={this.state.saving} onChange={this.handleSaving}/>
+                <select value={this.state.saving} onChange={this.handleSaving}>
+                    <option value={0.5}>5%</option>
+                    <option value={0.10}>10%</option>
+                    <option value={0.15}>15%</option>
+                </select>
             </label>
             <br/>
             <label>
                 invest:
-                <input type="float" value={this.state.invest} onChange={this.handleInvest}/>
+                <select value={this.state.invest} onChange={this.handleInvest}>
+                    <option value={0.5}>5%</option>
+                    <option value={0.10}>10%</option>
+                    <option value={0.15}>15%</option>
+                </select>
             </label>
             <br/>
             <input type="submit" value="create budget" />
