@@ -8,6 +8,7 @@ export default class BudgetCard extends React.Component {
         render: false
     }
     render(){
+        console.log(this.props.toggle)
         let left = this.props.budget.income - this.props.budget.expenses - this.props.budget.savings - this.props.budget.investment
         return (
         <div className="budget">

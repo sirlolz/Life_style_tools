@@ -26,7 +26,9 @@ export default class CreateBudget extends React.Component {
 
     handleSubmit = (e) => {
         e.preventDefault()
-        this.props.toggle();
+        if (this.props.firstTime){
+            this.props.toggle(false);
+        }else{this.props.toggle()}
         this.props.handleCreate(this.state.income, this.state.expense, this.state.saving, this.state.invest)
     }
 

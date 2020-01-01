@@ -79,6 +79,7 @@
 }
 
 .form input {
+    color: orangered;
     background: rgba(14, 14, 14, 0.452);
     border: none;
 }
