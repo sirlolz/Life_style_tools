@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/Life_style_tools/static/css/main.0c6dfc41.chunk.css",
+    "main.js": "/Life_style_tools/static/js/main.1a9c2f58.chunk.js",
+    "main.js.map": "/Life_style_tools/static/js/main.1a9c2f58.chunk.js.map",
+    "runtime-main.js": "/Life_style_tools/static/js/runtime-main.f4d36f43.js",
+    "runtime-main.js.map": "/Life_style_tools/static/js/runtime-main.f4d36f43.js.map",
+    "static/js/2.f80d15ca.chunk.js": "/Life_style_tools/static/js/2.f80d15ca.chunk.js",
+    "static/js/2.f80d15ca.chunk.js.map": "/Life_style_tools/static/js/2.f80d15ca.chunk.js.map",
+    "index.html": "/Life_style_tools/index.html",
+    "precache-manifest.e2bb01936dc072e3fad7cab361917f3c.js": "/Life_style_tools/precache-manifest.e2bb01936dc072e3fad7cab361917f3c.js",
+    "service-worker.js": "/Life_style_tools/service-worker.js",
+    "static/css/main.0c6dfc41.chunk.css.map": "/Life_style_tools/static/css/main.0c6dfc41.chunk.css.map"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.f4d36f43.js",
+    "static/js/2.f80d15ca.chunk.js",
+    "static/css/main.0c6dfc41.chunk.css",
+    "static/js/main.1a9c2f58.chunk.js"
+  ]
+}
